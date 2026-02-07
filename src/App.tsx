@@ -28,8 +28,8 @@ function App() {
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
-          <li  key={todo.id}> {todo.content}
-          <button onClick={() => deleteTodo(todo.id)} style="background-color:Tomato;"> X </button>
+          <li  onClick={() => deleteTodo(todo.id)} key={todo.id}> {todo.content}
+          <button  style="background-color:Tomato;"> X </button>
           </li>
         ))}
       </ul>
