@@ -15,7 +15,7 @@ function App() {
   }, []);
 
   function createTodo() {
-    client.models.Todo.create({ content: window.prompt("Todo content") });
+    client.models.Todo.create({ content: window.prompt("Todo content"), isDone:false });
   }
     
   function deleteTodo(id: string) {
@@ -29,8 +29,13 @@ function App() {
       <ul>
         {todos.map((todo) => (
           <li   key={todo.id}> 
-          <button onClick={() => deleteTodo(todo.id)}>X</button> 
-           {todo.content}
+            <input type="checkbox" 
+              checked={todo.isDone} 
+              disabled={todo.isDone} 
+              onChange={() => toogleDone(todo.id)}
+            />
+            {todo.content}
+            <button onClick={() => deleteTodo(todo.id)}>X</button> 
           </li>
         ))}
       </ul>
